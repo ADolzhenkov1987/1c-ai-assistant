@@ -1,11 +1,11 @@
 # src/main.py
-from src.agent import create_agent
+from agent import create_agent_instance
 
 def main():
     print("=== 1C AI Ассистент ===")
     print("Введите вопрос по разработке 1С (или 'выход' для завершения)\n")
 
-    agent = create_agent()
+    agent = create_agent_instance()
 
     while True:
         user_input = input("Вы: ").strip()
@@ -13,8 +13,12 @@ def main():
             break
 
         try:
-            response = agent.invoke({"input": user_input})
-            print(f"\nАссистент: {response['output']}\n")
+            response = agent.invoke({
+                "messages": [{"role": "user", "content": user_input}]
+            })
+            # Последнее сообщение в списке — финальный ответ агента
+            final_message = response["messages"][-1]
+            print(f"\nАссистент: {final_message.text}\n")
         except Exception as e:
             print(f"\nОшибка: {e}\n")
 
