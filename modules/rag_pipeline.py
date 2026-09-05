@@ -4,7 +4,7 @@ from llama_index.core import VectorStoreIndex, StorageContext, Settings
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core.schema import Document
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-from llama_index.llms.ollama import Ollama          # ← вот это главное изменение
+from llama_index.llms.ollama import Ollama
 from config import *
 
 def init_llm():
