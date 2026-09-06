@@ -4,7 +4,7 @@ from pathlib import Path
 '''Развернул локальную модель. До этого пробовал GigaChat, но для того, 
     чтобы можно было использовать RAG в GigaChat необходима платная подписка с картой сбера, чего у меня не было
 '''
-OLLAMA_BASE_URL = "http://localhost:11434/v1"
+OLLAMA_BASE_URL = "http://localhost:11434/"
 
 # Данная модель подходит под конфигурацию ноута:
 # 32 gb RAM и 5080 mobile with 16 gb vRAM
@@ -12,6 +12,7 @@ LLM_MODEL = "qwen2.5:14b"
 # модель для поддержки русского языка
 EMBEDDING_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
 
+#Ниже информация для RAG. В data/docs можно положить примеры кода на 1с, чтобы модель точнее выдавала ответы
 DOCS_DIR = Path("data/docs")
 CODE_EXAMPLES_DIR = Path("data/code_examples")
 CHROMA_PERSIST_DIR = Path("chroma_db")

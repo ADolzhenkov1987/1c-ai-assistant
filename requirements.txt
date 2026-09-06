@@ -1,0 +1,7 @@
+python 3.14
+langchain
+langgraph
+llama_index
+langchain_ollama
+pydantic
+fastapi

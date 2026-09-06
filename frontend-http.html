@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Виртуальный помощник 1С</title>
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            section {
+                width: 60%;
+                min-width: 400pt;
+                margin: 10pt 0;
+                border: #cccccc solid thin;
+                border-radius: 10pt;
+            }
+            section#output {
+                padding: 0 10pt;
+            }
+            section#input {
+                padding: 10pt;
+            }
+            article.question, article.answer {
+                border: #cccccc solid medium;
+                border-radius: 10pt;
+                margin: 10pt 0;
+                padding: 5pt;
+            }
+            article.question {
+                margin-left: 30%;
+                text-align: right;
+            }
+            article.answer {
+                margin-right: 30%;
+            }
+            #input-data {
+                display: block;
+                padding: 5pt;
+            }
+            label, textarea {
+                display: block;
+                width: 100%;
+            }
+            textarea {
+                height: 5em;
+                margin-bottom: 4pt;
+            }
+            .button {
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="output"></section>
+        <section id="input">
+            <form id="input-data">
+                <label>Введите текст вопроса</label>
+                <textarea id="question"></textarea>
+                <div class="button">
+                    <input type="submit" id="submit-button"
+                                         value="Отправить">
+                </div>
+            </form>
+        </section>
+    </body>
+    <script>
+        const backendPath = 'http://localhost:8000/answer/';
+        const outputPane = document.getElementById('output');
+        const inputDataForm = document.getElementById('input-data');
+        const questionField = document.getElementById('question');
+        const submitButton = document.getElementById('submit-button');
+
+        inputDataForm.addEventListener('submit', async evt => {
+            evt.preventDefault();
+            submitButton.disabled = true;
+            questionText = questionField.value;
+            if (questionText) {
+                const article = document.createElement('article');
+                article.classList.add('question');
+                article.textContent = questionText;
+                outputPane.appendChild(article);
+                questionObj = {question: questionText};
+                responseObj = await fetch(backendPath, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(questionObj)
+                });
+                if (responseObj.ok) {
+                    const answerObj = await responseObj.json();
+                    const article = document.createElement('article');
+                    article.classList.add('answer');
+                    article.textContent = answerObj.answer;
+                    outputPane.appendChild(article);
+                    inputDataForm.reset();
+                }
+            }
+            submitButton.disabled = false;
+        });
+    </script>
+</html>

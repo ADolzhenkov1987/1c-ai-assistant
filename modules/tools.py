@@ -1,6 +1,6 @@
 # src/tools.py
 from langchain.tools import tool
-from rag_pipeline import get_query_engine, build_index
+from modules.rag_pipeline import get_query_engine, build_index
 
 _index = build_index()
 _query_engine = get_query_engine(_index)

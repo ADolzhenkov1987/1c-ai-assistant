@@ -5,15 +5,15 @@ from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core.schema import Document
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.llms.ollama import Ollama
-from config import *
+from modules.config import *
 
 def init_llm():
     """Подключаем локальную LLM через нативную интеграцию Ollama."""
     return Ollama(
         model=LLM_MODEL,
-        base_url="http://localhost:11434",
+        base_url=OLLAMA_BASE_URL,
         request_timeout=120.0,
-        context_window=32768,    # Qwen 2.5 поддерживает до 32K
+        context_window=32768, 
     )
 
 def init_embed_model():
