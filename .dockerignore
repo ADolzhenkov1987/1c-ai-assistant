@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+.git/
+test_mcp.ps1
+init.json
+data/*

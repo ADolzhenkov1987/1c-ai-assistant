@@ -1,7 +1,9 @@
-python 3.14
-langchain
-langgraph
-llama_index
-langchain_ollama
-pydantic
 fastapi
+uvicorn[standard]
+mcp
+langgraph
+gigachat
+httpx
+langchain
+pydantic
+langchain_gigachat
