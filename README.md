@@ -60,6 +60,7 @@ EDT → Help → Install New Software… → https://sekam68.github.io/edt-compa
 
 В Cline: MCP Servers → Configure → файл cline_mcp_settings.json:
 
+```
 {
   "mcpServers": {
     "edt-companion-mcp": {
@@ -74,6 +75,7 @@ EDT → Help → Install New Software… → https://sekam68.github.io/edt-compa
     }
   }
 }
+```
 
 Важно: транспорт строго streamableHttp — без этого Cline уходит в SSE и получает ошибку 405.
 Имя сервера агента не должно начинаться с цифры (1c-assistant отклоняет GigaChat с 422) — используется assistant-1c.
@@ -84,7 +86,8 @@ EDT → Help → Install New Software… → https://sekam68.github.io/edt-compa
 
 Файл .clinerules в корне репозитория в формате md (VS Code открыт на корне репозитория):
 
-<!-- # Правила работы с кодом 1С
+```
+# Правила работы с кодом 1С
 
 ## Получение контекста
 - Перед ответами по конфигурации читать код через edt-companion-mcp,
@@ -97,7 +100,8 @@ EDT → Help → Install New Software… → https://sekam68.github.io/edt-compa
 ## Внесение изменений
 - Перед правкой показать план. Править по одному модулю, дифф — на
   подтверждение. После правок запустить валидацию проекта.
-- Git-коммиты не делать — коммитит пользователь. -->
+- Git-коммиты не делать — коммитит пользователь.
+```
 
 Рабочий цикл:
 
