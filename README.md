@@ -18,14 +18,14 @@ uv tool install gpt2giga
 В отдельной папке (например C:\Python\gpt2giga) создать .env
 
 Содержимое файла .env:
-
+```
 GPT2GIGA_MODE=PROD
 GPT2GIGA_ENABLE_API_KEY_AUTH=True
 GPT2GIGA_API_KEY=<произвольный_секрет> (задать самостоятельно, запомнить)
 GIGACHAT_CREDENTIALS=<тот же ключ, что в .env контейнера агента> (Ваш ключ от Гигачата)
 GIGACHAT_SCOPE=GIGACHAT_API_PERS
 GIGACHAT_VERIFY_SSL_CERTS=False   # для локальной разработки
-
+```
 cd C:\Python\gpt2giga
 gpt2giga        # окно держать открытым
 
